@@ -18,10 +18,12 @@ const {
   updateOrder,
   removeOrder,
 } = require('./controllers/orderControllers');
+const cors = require('cors');
 
 const port = process.env.PORT || 8000;
 
 app.use(express.json());
+app.use(cors({ origin: 'http://localhost:5173' }));
 
 app.route('/users').get(getAllUsers).post(createUser);
 app.route('/users/:id').get(getOneUser).put(updateUser).delete(deleteUser);
